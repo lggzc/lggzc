@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >  
+<mapper namespace="com.defonds.bdp.city.mapper.CityMapper" >  
+     
+    <insert id="insertCity" parameterType="com.defonds.bdp.city.bean.City">  
+        insert into city_code_cn (city_code, city_jb, province_code, city_name, city, province)  
+        values ( #{cityCode,jdbcType=CHAR}, #{cityJb,jdbcType=INTEGER}, #{provinceCode,jdbcType=CHAR},  
+        #{cityName,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR} )  
+    </insert>  
+    
+    <select id="provinceCities" parameterType=String>
+    select * from city_code_cn where province = #{province,jdbcType=VARCHAR}
+    </select>
+
+    <select id="searchCity" parameterType=String>
+    select * from city_code_cn where province = #{cityCode,jdbcType=CHAR}
+    </select>
+</mapper>  
